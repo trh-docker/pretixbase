@@ -14,7 +14,6 @@ RUN apt-get update && \
     libxml2-dev \
     libxslt1-dev \
     locales \
-    nginx \
     python-dev \
     python-virtualenv \
     python3-dev \
@@ -27,10 +26,9 @@ RUN apt-get update && \
     locale-gen C.UTF-8 && \
     /usr/sbin/update-locale LANG=C.UTF-8 && \
     mkdir /etc/pretix && \
-    mkdir /opt/tlm/data && \
+    mkdir /opt/tlm/data /opt/tlm/static && \
     useradd -ms /bin/bash -d /opt/tlm/pretix -u 15371 pretixuser && \
     echo 'pretixuser ALL=(ALL) NOPASSWD: /usr/bin/supervisord' >> /etc/sudoers && \
-    mkdir /opt/tlm/static &&\
     apt-get autoclean && apt-get autoremove &&\
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 
